@@ -124,3 +124,40 @@ class ExampleDeck:
             Card(Card.Defect.BLIZZARD),
             Card(Card.Defect.BLIZZARD),
         ])
+
+    @staticmethod
+    def watcher_calm_neutral():
+        return Deck([
+            Card(Card.Watcher.INNER_PEACE),
+            Card(Card.Watcher.EMPTY_MIND),
+            Card(Card.Watcher.EMPTY_MIND),
+            Card(Card.Watcher.FLURRY_OF_BLOWS),
+            Card(Card.Watcher.FLURRY_OF_BLOWS),
+            Card(Card.Watcher.FLURRY_OF_BLOWS),
+        ])
+
+    @staticmethod
+    def watcher_calm_wrath():
+        return Deck([
+            Card(Card.Watcher.RUSHDOWN),
+            Card(Card.Watcher.ERUPTION),
+            Card(Card.Watcher.INDIGNATION),
+        ])
+
+    @staticmethod
+    def watcher_divinity_wrath():
+        return Deck([
+            Card(Card.Watcher.PRAY),
+            Card(Card.Watcher.PROSTRATE),
+            Card(Card.Watcher.RUSHDOWN),
+            Card(Card.Watcher.ERUPTION),
+            Card(Card.Colorless.INSIGHT),
+        ])
+
+    @staticmethod
+    def watcher_flash():
+        return Deck([
+            Card(Card.Colorless.FLASH_OF_STEEL),
+            Card(Card.Colorless.FLASH_OF_STEEL),
+            Card(Card.Watcher.ERUPTION),
+        ])
