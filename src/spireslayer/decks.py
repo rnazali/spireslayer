@@ -57,6 +57,40 @@ class ExampleDeck:
             Card(Card.Ironclad.IMPERVIOUS),
         ])
 
+    @staticmethod
+    def silent_poison():
+        return Deck([
+            Card(Card.Silent.BOUNCING_FLASK),
+            Card(Card.Silent.CATALYST),
+            Card(Card.Silent.NOXIOUS_FUMES),
+            Card(Card.Silent.NOXIOUS_FUMES),
+            Card(Card.Silent.NOXIOUS_FUMES),
+            Card(Card.Silent.BACKFLIP),
+            Card(Card.Silent.BACKFLIP),
+            Card(Card.Silent.DODGE_AND_ROLL),
+            Card(Card.Silent.BLUR),
+            Card(Card.Silent.BLUR),
+            Card(Card.Silent.CALTROPS),
+        ])
+
+    @staticmethod
+    def silent_shiv():
+        return Deck([
+            Card(Card.Silent.ACCURACY),
+            Card(Card.Silent.ACCURACY),
+            Card(Card.Silent.ACCURACY),
+            Card(Card.Silent.INFINITE_BLADES),
+            Card(Card.Silent.INFINITE_BLADES),
+            Card(Card.Silent.BLADE_DANCE),
+            Card(Card.Silent.BLADE_DANCE),
+            Card(Card.Silent.BLADE_DANCE),
+            Card(Card.Silent.CLOAK_AND_DAGGER),
+            Card(Card.Silent.CLOAK_AND_DAGGER),
+            Card(Card.Silent.CLOAK_AND_DAGGER),
+            Card(Card.Silent.PREPARED),
+            Card(Card.Silent.PREPARED),
+            Card(Card.Silent.PREPARED),
+        ])
 
     @staticmethod
     def defect_lightning():
