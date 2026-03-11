@@ -44,8 +44,7 @@ include = ["spireslayer"]
 exclude = [
     ".github",
     "assets",
-    "backups",
     "example",
-    "venv"
+    ".venv"
 ]
 namespaces = false
