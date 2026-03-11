@@ -19,3 +19,38 @@ class Deck(object):
         return [
             card.to_json() for card in self.card_list
         ]
+
+
+class ExampleDeck:
+    @staticmethod
+    def defect_lightning():
+        return Deck([
+            Card(Card.Defect.LEAP),
+            Card(Card.Defect.LEAP),
+            Card(Card.Defect.LEAP),
+            Card(Card.Defect.ZAP),
+            Card(Card.Defect.ZAP),
+            Card(Card.Defect.ZAP),
+            Card(Card.Defect.ZAP),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.THUNDER_STRIKE),
+        ])
+
+    @staticmethod
+    def defect_frost():
+        return Deck([
+            Card(Card.Defect.GLACIER),
+            Card(Card.Defect.GLACIER),
+            Card(Card.Defect.GLACIER),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.DEFRAGMENT),
+            Card(Card.Defect.BLIZZARD),
+            Card(Card.Defect.BLIZZARD),
+            Card(Card.Defect.BLIZZARD),
+            Card(Card.Defect.BLIZZARD),
+            Card(Card.Defect.BLIZZARD),
+        ])
