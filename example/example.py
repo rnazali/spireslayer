@@ -1,5 +1,5 @@
 from spireslayer.decks import ExampleDeck
-from spireslayer.save_editor import SaveEditor
+from spireslayer.editor import SaveEditor
 
 if __name__ == '__main__':
     save_editor = SaveEditor(

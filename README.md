@@ -25,7 +25,7 @@ If your installation happened to be using the default, then you don't need to pa
 The package will handle it for you:
 
 ```python3
-from spireslayer.save_editor import SaveEditor
+from spireslayer.editor import SaveEditor
 
 save_editor = SaveEditor()
 ```
@@ -33,16 +33,16 @@ save_editor = SaveEditor()
 For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` object:
 
 ```python3
-from spireslayer.save_editor import SaveEditor
+from spireslayer.editor import SaveEditor
 
 # custom Windows path
 save_editor = SaveEditor(
-    installation_path="D:\\MyGames\\SlayTheSpire",
+  installation_path="D:\\MyGames\\SlayTheSpire",
 )
 
 # or linux path
 save_editor = SaveEditor(
-    installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
+  installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
 )
 ```
 
@@ -53,26 +53,25 @@ Create your own editor behavior by importing the `SaveEditor` to your python scr
 ```python
 # defect_editor.py
 
-from spireslayer.save_editor import SaveEditor
+from spireslayer.editor import SaveEditor
 from spireslayer.decks import Deck
 from spireslayer.card import Card
-from spireslayer.templates.defect_card import GLACIER, DEFRAGMENT, BLIZZARD
 
 save_editor = SaveEditor()
 
 # let's start by creating a custom powerful deck for our Defect
 save_editor.set_deck(Deck([
-    Card(GLACIER),
-    Card(GLACIER),
-    Card(GLACIER),
-    Card(DEFRAGMENT),
-    Card(DEFRAGMENT),
-    Card(DEFRAGMENT),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
+  Card(Card.Defect.GLACIER),
+  Card(Card.Defect.GLACIER),
+  Card(Card.Defect.GLACIER),
+  Card(Card.Defect.DEFRAGMENT),
+  Card(Card.Defect.DEFRAGMENT),
+  Card(Card.Defect.DEFRAGMENT),
+  Card(Card.Defect.BLIZZARD),
+  Card(Card.Defect.BLIZZARD),
+  Card(Card.Defect.BLIZZARD),
+  Card(Card.Defect.BLIZZARD),
+  Card(Card.Defect.BLIZZARD),
 ]))
 
 # or maybe increase our Defect's max orb
@@ -106,23 +105,25 @@ save_editor.write_json_to_file()
 ## Notes
 - This package now supports Colorless Card, and nearly all 4 playable hero's cards (thanks [@gabrekt](https://github.com/gabrekt)!).
 - There is a [know issue](https://github.com/rahmatnazali/spireslayer/issues/13) with the Watcher's Rushdown Card not being correctly recognized.
-- For any change that are not yet supported within the package, please use the provided API `SaveEditor.get_json()` and 
-change it directly.
-For example:
+- For any change that are not yet supported within the package, please use the provided API `SaveEditor.get_json()` and
+  change it directly.
+  For example:
 
     ```python3
-    from spireslayer.save_editor import SaveEditor
-    
-    save_editor = SaveEditor()
-    
-    save_file = save_editor.get_json()
-    save_file['current_health'] = 1000
-    save_file['some-key'] = 'something-something'
-    
-    # don't forget to give it back to the save_editor
-    save_editor.set_json(save_file)
-    
-    save_editor.write_json_to_file()
+
+from spireslayer.editor import SaveEditor
+
+save_editor = SaveEditor()
+
+save_file = save_editor.get_json()
+save_file['current_health'] = 1000
+save_file['some-key'] = 'something-something'
+
+# don't forget to give it back to the save_editor
+
+save_editor.set_json(save_file)
+
+save_editor.write_json_to_file()
     ```
 
   Refer to the [readable save file example](example/DEFECT_readable.json) for more available keys.

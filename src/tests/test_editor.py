@@ -1,6 +1,6 @@
 from spireslayer.card import Card
 from spireslayer.decks import Deck
-from spireslayer.save_editor import SaveEditor
+from spireslayer.editor import SaveEditor
 
 
 def test_initialization():
