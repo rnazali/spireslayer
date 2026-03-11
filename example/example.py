@@ -1,6 +1,5 @@
-from spireslayer.templates.watcher_deck import *
+from spireslayer.decks import ExampleDeck
 from spireslayer.save_editor import SaveEditor
-
 
 if __name__ == '__main__':
     save_editor = SaveEditor(
@@ -15,7 +14,7 @@ if __name__ == '__main__':
 
     # For example, for The Defect, we can maximize the orbs and customize the whole deck
     save_editor.update_max_orbs()
-    save_editor.set_deck(flash_deck)
+    save_editor.set_deck(ExampleDeck.watcher_flash())
 
-    # After customization is finished, call this method to rewrite the save data back to where it belong
+    # After customization is finished, call this method to rewrite the save data back to where it belongs
     save_editor.write_json_to_file()
