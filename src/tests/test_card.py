@@ -23,3 +23,8 @@ def test_card_to_json():
         "misc": 0,
         "upgrades": 1,
     }
+
+
+def test_card_wording():
+    assert Card.Defect.LEAP == "Leap"
+    assert Card.Defect.ZAP == "Zap"
