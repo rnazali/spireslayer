@@ -15,7 +15,7 @@ authors = [
 maintainers = [
   { name="Rahmat Nazali Salimi", email="rahmatnazali95@gmail.com" },
 ]
-description = "Save file editor for Slay the Spire"
+description = "Save editor for Slay the Spire"
 readme = "README-PYPI.md"
 requires-python = ">=3.8.10"
 classifiers = [
@@ -35,8 +35,8 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-"Homepage" = "https://github.com/rahmatnazali/spireslayer"
-"Bug Tracker" = "https://github.com/rahmatnazali/spireslayer/issues"
+"Homepage" = "https://github.com/rnazali/spireslayer"
+"Bug Tracker" = "https://github.com/rnazali/spireslayer/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
