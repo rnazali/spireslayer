@@ -135,7 +135,7 @@ class Card(object):
         CATALYST = "Catalyst"
         CHOKE = "Choke"
         CONCENTRATE = "Concentrate"
-        CRIPPLING_CLOUD = "Crippling Cloud"
+        CRIPPLING_CLOUD = "Crippling Posion"
         DASH = "Dash"
         DISTRACTION = "Distraction"
         ENDLESS_AGONY = "Endless Agony"
