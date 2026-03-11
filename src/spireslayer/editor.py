@@ -7,7 +7,7 @@ from .card import Card
 from .decks import Deck
 
 
-class SaveEditor(object):
+class Editor(object):
     def __init__(self,
                  installation_path: Optional[str] = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
                  save_folder_name: Optional[str] = "saves",

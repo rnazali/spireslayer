@@ -25,24 +25,24 @@ If your installation happened to be using the default, then you don't need to pa
 The package will handle it for you:
 
 ```python3
-from spireslayer.editor import SaveEditor
+from spireslayer.editor import Editor
 
-save_editor = SaveEditor()
+editor = Editor()
 ```
 
 For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` object:
 
 ```python3
-from spireslayer.editor import SaveEditor
+from spireslayer.editor import Editor
 
 # custom Windows path
-save_editor = SaveEditor(
-  installation_path="D:\\MyGames\\SlayTheSpire",
+editor = Editor(
+    installation_path="D:\\MyGames\\SlayTheSpire",
 )
 
 # or linux path
-save_editor = SaveEditor(
-  installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
+editor = Editor(
+    installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
 )
 ```
 
@@ -53,45 +53,45 @@ Create your own editor behavior by importing the `SaveEditor` to your python scr
 ```python
 # defect_editor.py
 
-from spireslayer.editor import SaveEditor
+from spireslayer.editor import Editor
 from spireslayer.decks import Deck
 from spireslayer.card import Card
 
-save_editor = SaveEditor()
+editor = Editor()
 
 # let's start by creating a custom powerful deck for our Defect
-save_editor.set_deck(Deck([
-  Card(Card.Defect.GLACIER),
-  Card(Card.Defect.GLACIER),
-  Card(Card.Defect.GLACIER),
-  Card(Card.Defect.DEFRAGMENT),
-  Card(Card.Defect.DEFRAGMENT),
-  Card(Card.Defect.DEFRAGMENT),
-  Card(Card.Defect.BLIZZARD),
-  Card(Card.Defect.BLIZZARD),
-  Card(Card.Defect.BLIZZARD),
-  Card(Card.Defect.BLIZZARD),
-  Card(Card.Defect.BLIZZARD),
+editor.set_deck(Deck([
+    Card(Card.Defect.GLACIER),
+    Card(Card.Defect.GLACIER),
+    Card(Card.Defect.GLACIER),
+    Card(Card.Defect.DEFRAGMENT),
+    Card(Card.Defect.DEFRAGMENT),
+    Card(Card.Defect.DEFRAGMENT),
+    Card(Card.Defect.BLIZZARD),
+    Card(Card.Defect.BLIZZARD),
+    Card(Card.Defect.BLIZZARD),
+    Card(Card.Defect.BLIZZARD),
+    Card(Card.Defect.BLIZZARD),
 ]))
 
 # or maybe increase our Defect's max orb
-save_editor.update_max_orbs(15)
+editor.update_max_orbs(15)
 
 # or basically anything you need
-save_editor.update_current_health(400)
-save_editor.update_max_health(500)
-save_editor.update_hand_size(10)
-save_editor.update_energy_per_turn(20)
+editor.update_current_health(400)
+editor.update_max_health(500)
+editor.update_hand_size(10)
+editor.update_energy_per_turn(20)
 
 # for attributes that are not yet provided within the package's method,
 # please use the `update_attribute` method.
 # You can find the key for each attribute in the example JSON save file provided in this project
-save_editor.update_attribute('current_health', 90)
-save_editor.update_attribute('hand_size', 10)
+editor.update_attribute('current_health', 90)
+editor.update_attribute('hand_size', 10)
 
 # After customization is finished, call this method to rewrite the save data back to the original place.
 # WARNING: The old save file will be replaced.
-save_editor.write_json_to_file()
+editor.write_json_to_file()
 ```
 
 ### 3. Run the editor
