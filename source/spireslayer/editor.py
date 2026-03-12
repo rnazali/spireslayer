@@ -82,7 +82,7 @@ class Editor:
             return content
 
     def save(self):
-        print(f"Writing new save data to {self.autosave_path}")
+        print(f"Updated save data has been written to {self.autosave_path}")
         with open(self.autosave_path, 'wb') as save_file:
             new_save_data = self.encode()
             save_file.write(new_save_data)
