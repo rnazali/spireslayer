@@ -12,7 +12,6 @@ class Editor:
     installation_path: str = r'C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire'
     save_folder_name: str = "saves"
     encryption_key: str = "key"
-    path: str
     autosave_path: str
 
     _encoded: str  # encoded autosave data (i.e. obfuscated)
@@ -43,8 +42,9 @@ class Editor:
                 self.installation_path = installation_path
             if save_folder:
                 self.save_folder_name = save_folder
-            self.path = os.path.join(self.installation_path, self.save_folder_name)
-            self.autosave_path = self.find_autosave()
+            self.autosave_path = self.find_autosave(
+                os.path.join(self.installation_path, self.save_folder_name)
+            )
 
         self.encoded = self.read_autosave()
         self.decoded = self.decode()
@@ -65,13 +65,14 @@ class Editor:
     def decoded(self, value: dict):
         self._decoded = value
 
-    def find_autosave(self) -> str:
-        assert os.path.isdir(self.path), f"Path {self.path} doesn't exist"
-        possible_save_files = os.listdir(self.path)
+    @staticmethod
+    def find_autosave(path: str) -> str:
+        assert os.path.isdir(path), f"Path {path} doesn't exist"
+        possible_save_files = os.listdir(path)
         for filename in possible_save_files:
             if filename.endswith('.autosave'):
-                return os.path.join(self.path, filename)
-        raise ValueError(f"No .autosave file found on {self.path}")
+                return os.path.join(path, filename)
+        raise ValueError(f"No .autosave file found on {path}")
 
     def read_autosave(self):
         assert os.path.exists(self.autosave_path), f"Path {self.autosave_path} doesn't exist"
