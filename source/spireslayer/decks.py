@@ -1,16 +1,16 @@
-from typing import Optional
+from typing import Optional, List
 
 from .card import Card
 
 
-class Deck(object):
-    def __init__(self, card_list: Optional[list] = None) -> None:
-        super().__init__()
+class Deck:
+    cards: List[Card]
 
-        if card_list is not None:
-            self.card_list = card_list
-        else:
-            self.card_list = []
+    def __init__(self, cards: Optional[List[Card]] = None):
+        self.cards = []
+
+        if cards:
+            cards.extend(cards)
 
     def add_card(self, card: Card):
         self.card_list.append(card)
