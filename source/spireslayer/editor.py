@@ -21,6 +21,8 @@ class Editor:
     class Attribute:
         CARDS = 'cards'
         ENERGY = 'red'
+        HAND_SIZE = 'hand_size'
+        MAX_ORBS = 'max_orbs'
 
     def __init__(
             self,
@@ -119,17 +121,17 @@ class Editor:
     def update_max_health(self, health: int = 72):
         self.update('max_health', health)
 
-    def update_max_orbs(self, max_orbs: int = 3):
-        self.update('max_orbs', max_orbs)
+    def max_orbs(self, max_orbs: int = 3):
+        self.update(self.Attribute.MAX_ORBS, max_orbs)
 
-    def update_hand_size(self, hand_size: int = 5):
-        self.update('hand_size', hand_size)
+    def hand_size(self, hand_size: int = 5):
+        self.update(self.Attribute.HAND_SIZE, hand_size)
 
     def energy(self, energy: int = 3):
-        self.decoded[self.Attribute.ENERGY] = energy
+        self.update(self.Attribute.ENERGY, energy)
 
     def deck(self, deck: Deck):
-        self.decoded[self.Attribute.CARDS] = deck.json
+        self.update(self.Attribute.CARDS, deck.json)
 
     def add_card(self, card: Card):
         self.decoded[self.Attribute.CARDS].append(card.json)

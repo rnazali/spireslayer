@@ -76,12 +76,12 @@ editor.deck(
     ]))
 
 # or maybe increase our Defect's max orb
-editor.update_max_orbs(15)
+editor.max_orbs(15)
 
 # or basically anything you need
 editor.update_current_health(400)
 editor.update_max_health(500)
-editor.update_hand_size(10)
+editor.hand_size(10)
 editor.energy(20)
 
 # for attributes that are not yet provided within the package's method,

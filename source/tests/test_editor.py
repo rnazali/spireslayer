@@ -48,7 +48,7 @@ def test_update_max_orbs():
     editor = Editor(autosave_path=autosave_path)
     original_max_orbs = editor.decoded['max_orbs']
     assert original_max_orbs == 10
-    editor.update_max_orbs(15)
+    editor.max_orbs(15)
     new_max_orbs = editor.decoded['max_orbs']
     assert original_max_orbs != new_max_orbs
     assert new_max_orbs == 15
@@ -58,7 +58,7 @@ def test_update_hand_size():
     editor = Editor(autosave_path=autosave_path)
     original_hand_size = editor.decoded['hand_size']
     assert original_hand_size == 10
-    editor.update_hand_size(15)
+    editor.hand_size(15)
     new_hand_size = editor.decoded['hand_size']
     assert original_hand_size != new_hand_size
     assert new_hand_size == 15
