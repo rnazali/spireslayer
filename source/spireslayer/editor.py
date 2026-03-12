@@ -128,7 +128,7 @@ class Editor:
         self.update('red', energy)
 
     def set_deck(self, deck: Deck):
-        self.update('cards', deck.json)
+        self.decoded[self.Attribute.CARDS] = deck.json
 
     def add_card(self, card: Card):
         self.decoded[self.Attribute.CARDS].append(card.json)
