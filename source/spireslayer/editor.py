@@ -100,4 +100,4 @@ class Editor(object):
         self.update_attribute('cards', deck.to_json())
 
     def add_card(self, card: Card):
-        self.json_save_data['cards'].append(card.to_json())
+        self.json_save_data['cards'].append(card.json)

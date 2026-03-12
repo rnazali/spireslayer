@@ -17,7 +17,7 @@ class Deck(object):
 
     def to_json(self):
         return [
-            card.to_json() for card in self.card_list
+            card.json for card in self.card_list
         ]
 
 

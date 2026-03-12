@@ -26,9 +26,9 @@ def test_custom_deck():
         card3,
     ]
     assert deck.to_json() == [
-        card1.to_json(),
-        card2.to_json(),
-        card3.to_json(),
+        card1.json,
+        card2.json,
+        card3.json,
     ]
 
 
@@ -41,4 +41,4 @@ def test_add_card():
 
     assert len(deck.card_list) == 1
     assert deck.card_list == [card]
-    assert deck.to_json() == [card.to_json()]
+    assert deck.to_json() == [card.json]

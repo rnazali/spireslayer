@@ -4,7 +4,12 @@ class Card:
         self.misc = 0  # currently unused, hidden from outside
         self.upgrades = 1 if upgrade else 0
 
-    def to_json(self):
+    @property
+    def is_upgraded(self) -> bool:
+        return bool(self.upgrades)
+
+    @property
+    def json(self) -> dict:
         return {
             "id": self.id,
             "misc": self.misc,
