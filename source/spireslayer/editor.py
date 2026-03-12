@@ -38,7 +38,7 @@ class Editor:
             self.autosave_path = self.find_autosave_file()
 
         self.encoded_json: str = self.read_autosave()
-        self.json = self.convert_save_to_json()
+        self.json = self.decode()
 
     @property
     def json(self):
@@ -65,10 +65,10 @@ class Editor:
     def write_json_to_file(self):
         print(f"Writing new save data to {self.autosave_path}")
         with open(self.autosave_path, 'wb') as save_file:
-            new_save_data = self.convert_json_to_save()
+            new_save_data = self.encode()
             save_file.write(new_save_data)
 
-    def convert_save_to_json(self) -> dict:
+    def decode(self) -> dict:
         base64_decoded_save_file: bytes = base64.b64decode(self.encoded_json)
         json_char_list: list = list()
 
@@ -81,7 +81,7 @@ class Editor:
         plain_json_string: str = ''.join(json_char_list)
         return json.loads(plain_json_string)
 
-    def convert_json_to_save(self) -> bytes:
+    def encode(self) -> bytes:
         assert self._json is not None, "JSON save data is None"
         plain_json_string: str = json.dumps(self._json)
         assert isinstance(plain_json_string, str)
