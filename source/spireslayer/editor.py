@@ -150,4 +150,5 @@ class Editor:
         return self
 
     def debug(self):
+        print(self.autosave_path)
         pprint(self.decoded, indent=4)
