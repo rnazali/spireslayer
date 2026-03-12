@@ -38,7 +38,7 @@ def test_update_max_health():
     editor = Editor(autosave_path=autosave_path)
     original_max_health = editor.decoded['max_health']
     assert original_max_health == 500
-    editor.update_max_health(100)
+    editor.max_health(100)
     new_max_health = editor.decoded['max_health']
     assert original_max_health != new_max_health
     assert new_max_health == 100

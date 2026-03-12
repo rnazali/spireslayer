@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     # In here, you can do whatever you want on your save file
     editor.update_current_health()
-    editor.update_max_health()
+    editor.max_health()
     editor.hand_size()
     editor.energy()
 

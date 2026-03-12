@@ -80,7 +80,7 @@ editor.max_orbs(15)
 
 # or basically anything you need
 editor.update_current_health(400)
-editor.update_max_health(500)
+editor.max_health(500)
 editor.hand_size(10)
 editor.energy(20)
 

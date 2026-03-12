@@ -22,7 +22,9 @@ class Editor:
         CARDS = 'cards'
         ENERGY = 'red'
         HAND_SIZE = 'hand_size'
+        MAX_HEALTH = 'max_health'
         MAX_ORBS = 'max_orbs'
+        CURRENT_HEALTH = 'current_health'
 
     def __init__(
             self,
@@ -115,11 +117,11 @@ class Editor:
     def update(self, attribute_name: str, value: Any) -> None:
         self.decoded[attribute_name] = value
 
-    def update_current_health(self, health: int = 72):
-        self.update('current_health', health)
+    def update_current_health(self, current_health: int = 72):
+        self.update(self.Attribute.CURRENT_HEALTH, current_health)
 
-    def update_max_health(self, health: int = 72):
-        self.update('max_health', health)
+    def max_health(self, max_health: int = 72):
+        self.update(self.Attribute.MAX_HEALTH, max_health)
 
     def max_orbs(self, max_orbs: int = 3):
         self.update(self.Attribute.MAX_ORBS, max_orbs)
