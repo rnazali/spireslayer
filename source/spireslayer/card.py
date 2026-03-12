@@ -254,7 +254,7 @@ class Card:
         RUSHDOWN = "Adaptation"
         SANCTITY = "Sanctity"
         SANDS_OF_TIME = "Sands of Time"
-        SIGNATURE_MOVE = "Signature Move"
+        SIGNATURE_MOVE = "SignatureMove"
         SIMMERING_FURY = "Simmering Fury"
         STUDY = "Study"
         SWIVEL = "Swivel"
