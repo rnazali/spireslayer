@@ -42,18 +42,12 @@ class ExampleDeck:
     def ironclad_block():
         return Deck([
             Card(Card.Ironclad.BARRICADE),
+            Card(Card.Ironclad.METALLICIZE),
+            Card(Card.Ironclad.IMPERVIOUS),
             Card(Card.Ironclad.ENTRENCH),
             Card(Card.Ironclad.BODY_SLAM),
-            Card(Card.Ironclad.BODY_SLAM),
-            Card(Card.Ironclad.BODY_SLAM),
-            Card(Card.Ironclad.BODY_SLAM),
-            Card(Card.Ironclad.BODY_SLAM),
             Card(Card.Ironclad.SHRUG_IT_OFF),
             Card(Card.Ironclad.SHRUG_IT_OFF),
-            Card(Card.Ironclad.SHRUG_IT_OFF),
-            Card(Card.Ironclad.IMPERVIOUS),
-            Card(Card.Ironclad.IMPERVIOUS),
-            Card(Card.Ironclad.IMPERVIOUS),
         ])
 
     @staticmethod
