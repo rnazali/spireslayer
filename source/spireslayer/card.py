@@ -251,7 +251,7 @@ class Card:
         PERSEVERANCE = "Perseverance"
         PRAY = "Pray"
         REACH_HEAVEN = "Reach Heaven"
-        RUSHDOWN = "Rushdown"
+        RUSHDOWN = "Adaptation"
         SANCTITY = "Sanctity"
         SANDS_OF_TIME = "Sands of Time"
         SIGNATURE_MOVE = "Signature Move"
