@@ -102,3 +102,23 @@ def test_add_card():
 
     deck.add_card(card4)
     assert editor.decoded["cards"] == deck.json
+
+
+def test_chain():
+    editor = Editor(autosave_path=autosave_path)
+    deck = Deck([
+        Card("1"),
+        Card("2"),
+        Card("3"),
+    ])
+
+    (
+        editor
+        .deck(deck)
+        .energy(10)
+        .hand_size(15)
+    )
+
+    assert editor.decoded[Editor.Attribute.CARDS] == deck.json
+    assert editor.decoded[Editor.Attribute.ENERGY] == 10
+    assert editor.decoded[Editor.Attribute.HAND_SIZE] == 15
