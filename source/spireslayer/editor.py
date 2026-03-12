@@ -1,7 +1,7 @@
 import base64
 import json
 import os
-from typing import Optional, Union
+from typing import Optional, Any
 
 from .card import Card
 from .decks import Deck
@@ -78,7 +78,7 @@ class Editor(object):
         final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
-    def update_attribute(self, attribute_name: str, value: Union[int, str]) -> None:
+    def update_attribute(self, attribute_name: str, value: Any) -> None:
         self.json_save_data[attribute_name] = value
 
     def update_current_health(self, health: int = 72):
@@ -97,7 +97,7 @@ class Editor(object):
         self.update_attribute('red', energy)
 
     def set_deck(self, deck: Deck):
-        self.update_attribute('cards', deck.to_json())
+        self.update_attribute('cards', deck.json)
 
     def add_card(self, card: Card):
         self.json_save_data['cards'].append(card.json)

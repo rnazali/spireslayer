@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Dict, Union
 
 from .card import Card
 
@@ -10,15 +10,14 @@ class Deck:
         self.cards = []
 
         if cards:
-            cards.extend(cards)
+            self.cards.extend(cards)
 
     def add_card(self, card: Card):
-        self.card_list.append(card)
+        self.cards.append(card)
 
-    def to_json(self):
-        return [
-            card.json for card in self.card_list
-        ]
+    @property
+    def json(self) -> List[Dict[str, Union[str, int]]]:
+        return [card.json for card in self.cards]
 
 
 class ExampleDeck:

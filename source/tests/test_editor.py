@@ -79,7 +79,7 @@ def test_set_deck():
     ])
     editor.set_deck(deck)
 
-    assert editor.get_json()["cards"] == deck.to_json()
+    assert editor.get_json()["cards"] == deck.json
 
 
 def test_add_card():
@@ -97,4 +97,4 @@ def test_add_card():
     assert len(editor.get_json()["cards"]) == 4
 
     deck.add_card(card4)
-    assert editor.get_json()["cards"] == deck.to_json()
+    assert editor.get_json()["cards"] == deck.json

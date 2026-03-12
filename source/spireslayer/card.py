@@ -1,3 +1,6 @@
+from typing import Dict, Union
+
+
 class Card:
     def __init__(self, card_id: str, upgrade: bool = True) -> None:
         self.id = card_id
@@ -9,7 +12,7 @@ class Card:
         return bool(self.upgrades)
 
     @property
-    def json(self) -> dict:
+    def json(self) -> Dict[str, Union[str, int]]:
         return {
             "id": self.id,
             "misc": self.misc,
