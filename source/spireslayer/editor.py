@@ -87,6 +87,8 @@ class Editor:
             new_save_data = self.encode()
             save_file.write(new_save_data)
 
+        return self
+
     def decode(self) -> dict:
         assert self.encoded is not None, "Encoded data is missing"
         base64_decoded_save_file: bytes = base64.b64decode(self.encoded)
@@ -115,29 +117,37 @@ class Editor:
         final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
-    def update(self, attribute_name: str, value: Any) -> None:
+    def update(self, attribute_name: str, value: Any):
         self.decoded[attribute_name] = value
+        return self
 
     def update_current_health(self, current_health: int = 72):
         self.update(self.Attribute.CURRENT_HEALTH, current_health)
+        return self
 
     def max_health(self, max_health: int = 72):
         self.update(self.Attribute.MAX_HEALTH, max_health)
+        return self
 
     def max_orbs(self, max_orbs: int = 3):
         self.update(self.Attribute.MAX_ORBS, max_orbs)
+        return self
 
     def hand_size(self, hand_size: int = 5):
         self.update(self.Attribute.HAND_SIZE, hand_size)
+        return self
 
     def energy(self, energy: int = 3):
         self.update(self.Attribute.ENERGY, energy)
+        return self
 
     def deck(self, deck: Deck):
         self.update(self.Attribute.CARDS, deck.json)
+        return self
 
     def add_card(self, card: Card):
         self.decoded[self.Attribute.CARDS].append(card.json)
+        return self
 
     def debug(self):
         pprint(self.decoded, indent=4)
