@@ -84,10 +84,10 @@ editor.update_hand_size(10)
 editor.update_energy_per_turn(20)
 
 # for attributes that are not yet provided within the package's method,
-# please use the `update_attribute` method.
+# please use the `update` method.
 # You can find the key for each attribute in the example JSON save file provided in this project
-editor.update_attribute('current_health', 90)
-editor.update_attribute('hand_size', 10)
+editor.update('current_health', 90)
+editor.update('hand_size', 10)
 
 # After customization is finished, call this method to rewrite the save data back to the original place.
 # WARNING: The old save file will be replaced.

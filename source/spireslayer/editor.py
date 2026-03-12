@@ -105,26 +105,26 @@ class Editor:
         final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
-    def update_attribute(self, attribute_name: str, value: Any) -> None:
-        self._decoded[attribute_name] = value
+    def update(self, attribute_name: str, value: Any) -> None:
+        self.decoded[attribute_name] = value
 
     def update_current_health(self, health: int = 72):
-        self.update_attribute('current_health', health)
+        self.update('current_health', health)
 
     def update_max_health(self, health: int = 72):
-        self.update_attribute('max_health', health)
+        self.update('max_health', health)
 
     def update_max_orbs(self, max_orbs: int = 3):
-        self.update_attribute('max_orbs', max_orbs)
+        self.update('max_orbs', max_orbs)
 
     def update_hand_size(self, hand_size: int = 5):
-        self.update_attribute('hand_size', hand_size)
+        self.update('hand_size', hand_size)
 
     def update_energy_per_turn(self, energy: int = 3):
-        self.update_attribute('red', energy)
+        self.update('red', energy)
 
     def set_deck(self, deck: Deck):
-        self.update_attribute('cards', deck.json)
+        self.update('cards', deck.json)
 
     def add_card(self, card: Card):
         self._decoded['cards'].append(card.json)
