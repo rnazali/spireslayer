@@ -142,7 +142,7 @@ class Card:
         CATALYST = "Catalyst"
         CHOKE = "Choke"
         CONCENTRATE = "Concentrate"
-        CRIPPLING_CLOUD = "Crippling Posion"
+        CRIPPLING_CLOUD = "Crippling Poison"
         DASH = "Dash"
         DISTRACTION = "Distraction"
         ENDLESS_AGONY = "Endless Agony"
