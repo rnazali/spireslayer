@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+from pprint import pprint
 from typing import Optional, Any
 
 from .card import Card
@@ -131,3 +132,6 @@ class Editor:
 
     def add_card(self, card: Card):
         self.decoded[self.Attribute.CARDS].append(card.json)
+
+    def debug(self):
+        pprint(self.decoded, indent=4)
