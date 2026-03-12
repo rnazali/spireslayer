@@ -59,17 +59,22 @@ class ExampleDeck:
     @staticmethod
     def silent_poison():
         return Deck([
+            Card(Card.Silent.NOXIOUS_FUMES),
+            Card(Card.Silent.NOXIOUS_FUMES),
+            Card(Card.Silent.NOXIOUS_FUMES),
+            Card(Card.Silent.CRIPPLING_CLOUD),
+            Card(Card.Silent.CORPSE_EXPLOSION),
+            Card(Card.Silent.BURST),
+            Card(Card.Silent.BANE),
             Card(Card.Silent.BOUNCING_FLASK),
-            Card(Card.Silent.CATALYST),
-            Card(Card.Silent.NOXIOUS_FUMES),
-            Card(Card.Silent.NOXIOUS_FUMES),
-            Card(Card.Silent.NOXIOUS_FUMES),
             Card(Card.Silent.BACKFLIP),
             Card(Card.Silent.BACKFLIP),
-            Card(Card.Silent.DODGE_AND_ROLL),
-            Card(Card.Silent.BLUR),
-            Card(Card.Silent.BLUR),
-            Card(Card.Silent.CALTROPS),
+            Card(Card.Silent.BACKFLIP),
+            Card(Card.Silent.BACKFLIP),
+            Card(Card.Silent.ESCAPE_PLAN),
+            Card(Card.Silent.ESCAPE_PLAN),
+            Card(Card.Silent.SETUP),
+            Card(Card.Silent.SETUP),
         ])
 
     @staticmethod
