@@ -272,7 +272,7 @@ class Card:
         ALPHA = "Alpha"
         BLASPHEMY = "Blasphemy"
         BRILLIANCE = "Brilliance"
-        CONJURE_BLADE = "Conjure Blade"
+        CONJURE_BLADE = "ConjureBlade"
         DEUS_EX_MACHINA = "Deus Ex Machina"
         DEVA_FORM = "Deva Form"
         DEVOTION = "Devotion"
