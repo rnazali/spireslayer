@@ -12,26 +12,31 @@ class Editor:
     save_folder_name: str = "saves"
     encryption_key: str = "key"
     path: str
-    save_file_path: str
+    autosave_path: str
     encoded_save_data: str
+    _encoded: str
     _json: dict
 
     def __init__(
             self,
             installation_path: Optional[str] = None,
             save_folder_name: Optional[str] = None,
-            key: Optional[str] = None
+            encryption_key: Optional[str] = None,
+            autosave_path: Optional[str] = None,
     ) -> None:
-        if installation_path:
-            self.installation_path = installation_path
-        if save_folder_name:
-            self.save_folder_name = save_folder_name
-        if key:
-            self.encryption_key = key
+        if encryption_key:
+            self.encryption_key = encryption_key
 
-        # construct final path
-        self.path = os.path.join(self.installation_path, self.save_folder_name)
-        self.save_file_path = self.find_autosave_file()
+        if autosave_path:
+            self.autosave_path = autosave_path
+        else:
+            if installation_path:
+                self.installation_path = installation_path
+            if save_folder_name:
+                self.save_folder_name = save_folder_name
+            self.path = os.path.join(self.installation_path, self.save_folder_name)
+            self.autosave_path = self.find_autosave_file()
+
         self.encoded_save_data: str = self.load_encoded_save_data_from_file()
         self._json = self.save_to_json()
 
@@ -52,14 +57,14 @@ class Editor:
         raise ValueError(f"No .autosave file found on {self.path}")
 
     def load_encoded_save_data_from_file(self):
-        with open(self.save_file_path, 'r') as save_file:
-            content = save_file.readline()
-            assert content is not None, "Encoded save data is None"
+        with open(self.autosave_path, 'r') as autosave_file:
+            content = autosave_file.readline()
+            assert content is not None, "Encoded save data is empty"
             return content
 
     def write_json_to_file(self):
-        print(f"Writing new save data to {self.save_file_path}")
-        with open(self.save_file_path, 'wb') as save_file:
+        print(f"Writing new save data to {self.autosave_path}")
+        with open(self.autosave_path, 'wb') as save_file:
             new_save_data = self.json_to_save()
             save_file.write(new_save_data)
 
