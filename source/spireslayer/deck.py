@@ -69,6 +69,7 @@ class ExampleDeck:
             Card(Card.Silent.ESCAPE_PLAN),
             Card(Card.Silent.SETUP),
             Card(Card.Silent.SETUP),
+            Card(Card.Silent.AFTER_IMAGE),
         ])
 
     @staticmethod
