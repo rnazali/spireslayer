@@ -20,6 +20,7 @@ class Editor:
 
     class Attribute:
         CARDS = 'cards'
+        ENERGY = 'red'
 
     def __init__(
             self,
@@ -124,10 +125,10 @@ class Editor:
     def update_hand_size(self, hand_size: int = 5):
         self.update('hand_size', hand_size)
 
-    def update_energy_per_turn(self, energy: int = 3):
-        self.update('red', energy)
+    def energy(self, energy: int = 3):
+        self.decoded[self.Attribute.ENERGY] = energy
 
-    def set_deck(self, deck: Deck):
+    def deck(self, deck: Deck):
         self.decoded[self.Attribute.CARDS] = deck.json
 
     def add_card(self, card: Card):

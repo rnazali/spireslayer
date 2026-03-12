@@ -68,7 +68,7 @@ def test_update_energy_per_turn():
     editor = Editor(autosave_path=autosave_path)
     original_energy_per_turn = editor.decoded['red']
     assert original_energy_per_turn == 20
-    editor.update_energy_per_turn(30)
+    editor.energy(30)
     new_energy_per_turn = editor.decoded['red']
     assert original_energy_per_turn != new_energy_per_turn
     assert new_energy_per_turn == 30
@@ -81,7 +81,7 @@ def test_set_deck():
         Card("2"),
         Card("3"),
     ])
-    editor.set_deck(deck)
+    editor.deck(deck)
 
     assert editor.decoded["cards"] == deck.json
 
@@ -93,7 +93,7 @@ def test_add_card():
         Card("2"),
         Card("3"),
     ])
-    editor.set_deck(deck)
+    editor.deck(deck)
     assert len(editor.decoded["cards"]) == 3
 
     card4 = Card("4")

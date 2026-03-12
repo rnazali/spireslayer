@@ -60,19 +60,20 @@ from spireslayer.card import Card
 editor = Editor()
 
 # let's start by creating a custom powerful deck for our Defect
-editor.set_deck(Deck([
-    Card(Card.Defect.GLACIER),
-    Card(Card.Defect.GLACIER),
-    Card(Card.Defect.GLACIER),
-    Card(Card.Defect.DEFRAGMENT),
-    Card(Card.Defect.DEFRAGMENT),
-    Card(Card.Defect.DEFRAGMENT),
-    Card(Card.Defect.BLIZZARD),
-    Card(Card.Defect.BLIZZARD),
-    Card(Card.Defect.BLIZZARD),
-    Card(Card.Defect.BLIZZARD),
-    Card(Card.Defect.BLIZZARD),
-]))
+editor.deck(
+    Deck([
+        Card(Card.Defect.GLACIER),
+        Card(Card.Defect.GLACIER),
+        Card(Card.Defect.GLACIER),
+        Card(Card.Defect.DEFRAGMENT),
+        Card(Card.Defect.DEFRAGMENT),
+        Card(Card.Defect.DEFRAGMENT),
+        Card(Card.Defect.BLIZZARD),
+        Card(Card.Defect.BLIZZARD),
+        Card(Card.Defect.BLIZZARD),
+        Card(Card.Defect.BLIZZARD),
+        Card(Card.Defect.BLIZZARD),
+    ]))
 
 # or maybe increase our Defect's max orb
 editor.update_max_orbs(15)
@@ -81,7 +82,7 @@ editor.update_max_orbs(15)
 editor.update_current_health(400)
 editor.update_max_health(500)
 editor.update_hand_size(10)
-editor.update_energy_per_turn(20)
+editor.energy(20)
 
 # for attributes that are not yet provided within the package's method,
 # please use the `update` method.
