@@ -39,7 +39,7 @@ dependencies = []
 "Bug Tracker" = "https://github.com/rnazali/spireslayer/issues"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["source"]
 include = ["spireslayer"]
 exclude = [
     ".github",
