@@ -17,6 +17,9 @@ class Editor:
     _encoded: str  # encoded autosave data (i.e. obfuscated)
     _decoded: dict  # decoded autosave data (i.e. json dict)
 
+    class Attribute:
+        CARDS = 'cards'
+
     def __init__(
             self,
             installation_path: Optional[str] = None,
@@ -127,4 +130,4 @@ class Editor:
         self.update('cards', deck.json)
 
     def add_card(self, card: Card):
-        self._decoded['cards'].append(card.json)
+        self.decoded[self.Attribute.CARDS].append(card.json)
