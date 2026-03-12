@@ -13,7 +13,6 @@ class Editor:
     encryption_key: str = "key"
     path: str
     autosave_path: str
-    encoded_json: str
     _encoded: str
     _json: dict
 
@@ -37,8 +36,16 @@ class Editor:
             self.path = os.path.join(self.installation_path, self.save_folder_name)
             self.autosave_path = self.find_autosave_file()
 
-        self.encoded_json: str = self.read_autosave()
+        self.encoded: str = self.read_autosave()
         self.json = self.decode()
+
+    @property
+    def encoded(self):
+        return self._encoded
+
+    @encoded.setter
+    def encoded(self, value: str):
+        self._encoded = value
 
     @property
     def json(self):
@@ -69,7 +76,7 @@ class Editor:
             save_file.write(new_save_data)
 
     def decode(self) -> dict:
-        base64_decoded_save_file: bytes = base64.b64decode(self.encoded_json)
+        base64_decoded_save_file: bytes = base64.b64decode(self.encoded)
         json_char_list: list = list()
 
         for i, obfuscated_data in enumerate(base64_decoded_save_file):
