@@ -110,8 +110,8 @@ class Editor:
 
         decoded_char_list: list = list()
         for i, plain_data in enumerate(plain_json_string):
-            modulus_index: int = i % len(self.key)
-            xor_result: int = ord(plain_data) ^ ord(self.key[modulus_index])
+            modulus_index: int = i % len(self.encryption_key)
+            xor_result: int = ord(plain_data) ^ ord(self.encryption_key[modulus_index])
             decoded_char_list.append(xor_result)
 
         final_data = base64.b64encode(bytes(decoded_char_list))
