@@ -125,6 +125,24 @@ class ExampleDeck:
         ])
 
     @staticmethod
+    def watcher_wrath():
+        return Deck([
+            Card(Card.Watcher.ERUPTION),
+            Card(Card.Watcher.CONSECRATE),
+            Card(Card.Watcher.CONSECRATE),
+            Card(Card.Watcher.CONSECRATE),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.PROSTRATE),
+            Card(Card.Watcher.SIGNATURE_MOVE),
+            Card(Card.Watcher.CONJURE_BLADE),
+            Card(Card.Watcher.RUSHDOWN),
+        ])
+
+    @staticmethod
     def watcher_calm_neutral():
         return Deck([
             Card(Card.Watcher.INNER_PEACE),
