@@ -78,6 +78,7 @@ class Editor:
             save_file.write(new_save_data)
 
     def decode(self) -> dict:
+        assert self.encoded is not None, "Encoded data is missing"
         base64_decoded_save_file: bytes = base64.b64decode(self.encoded)
         json_char_list: list = list()
 
@@ -91,9 +92,9 @@ class Editor:
         return json.loads(plain_json_string)
 
     def encode(self) -> bytes:
-        assert self._decoded is not None, "JSON save data is None"
-        plain_json_string: str = json.dumps(self._decoded)
-        assert isinstance(plain_json_string, str)
+        assert self.decoded is not None, "Decoded data is missing"
+        plain_json_string: str = json.dumps(self.decoded)
+        assert isinstance(plain_json_string, str), "Dumped data is not a string"
 
         decoded_char_list: list = list()
         for i, plain_data in enumerate(plain_json_string):
