@@ -7,29 +7,41 @@ from .card import Card
 from .deck import Deck
 
 
-class Editor(object):
-    def __init__(self,
-                 installation_path: Optional[str] = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
-                 save_folder_name: Optional[str] = "saves",
-                 key: str = "key"
-                 ) -> None:
-        super().__init__()
+class Editor:
+    installation_path: str = r'C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire'
+    save_folder_name: str = "saves"
+    encryption_key: str = "key"
+    path: str
+    save_file_path: str
+    encoded_save_data: str
+    _json: dict
 
-        if save_folder_name is not None:
-            self.path = os.path.join(installation_path, save_folder_name)
-        else:
-            self.path = installation_path
+    def __init__(
+            self,
+            installation_path: Optional[str] = None,
+            save_folder_name: Optional[str] = None,
+            key: Optional[str] = None
+    ) -> None:
+        if installation_path:
+            self.installation_path = installation_path
+        if save_folder_name:
+            self.save_folder_name = save_folder_name
+        if key:
+            self.encryption_key = key
 
-        self.key = key
+        # construct final path
+        self.path = os.path.join(self.installation_path, self.save_folder_name)
         self.save_file_path = self.find_autosave_file()
         self.encoded_save_data: str = self.load_encoded_save_data_from_file()
-        self.json_save_data = self.save_to_json()
+        self._json = self.save_to_json()
 
-    def set_json(self, json_dict: dict):
-        self.json_save_data = json_dict
+    @property
+    def json(self):
+        return self._json
 
-    def get_json(self) -> dict:
-        return self.json_save_data
+    @json.setter
+    def json(self, value: dict):
+        self._json = value
 
     def find_autosave_file(self):
         assert os.path.isdir(self.path), f"Path {self.path} doesn't exist"
@@ -56,8 +68,8 @@ class Editor(object):
         json_char_list: list = list()
 
         for i, obfuscated_data in enumerate(base64_decoded_save_file):
-            modulus_index: int = i % len(self.key)
-            xor_result: int = obfuscated_data ^ ord(self.key[modulus_index])
+            modulus_index: int = i % len(self.encryption_key)
+            xor_result: int = obfuscated_data ^ ord(self.encryption_key[modulus_index])
             char_result: str = chr(xor_result)
             json_char_list.append(char_result)
 
@@ -65,8 +77,8 @@ class Editor(object):
         return json.loads(plain_json_string)
 
     def json_to_save(self) -> bytes:
-        assert self.json_save_data is not None, "JSON save data is None"
-        plain_json_string: str = json.dumps(self.json_save_data)
+        assert self._json is not None, "JSON save data is None"
+        plain_json_string: str = json.dumps(self._json)
         assert isinstance(plain_json_string, str)
 
         decoded_char_list: list = list()
@@ -79,7 +91,7 @@ class Editor(object):
         return final_data
 
     def update_attribute(self, attribute_name: str, value: Any) -> None:
-        self.json_save_data[attribute_name] = value
+        self._json[attribute_name] = value
 
     def update_current_health(self, health: int = 72):
         self.update_attribute('current_health', health)
@@ -100,4 +112,4 @@ class Editor(object):
         self.update_attribute('cards', deck.json)
 
     def add_card(self, card: Card):
-        self.json_save_data['cards'].append(card.json)
+        self._json['cards'].append(card.json)
