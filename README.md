@@ -54,7 +54,7 @@ Create your own editor behavior by importing the `SaveEditor` to your python scr
 # defect_editor.py
 
 from spireslayer.editor import Editor
-from spireslayer.decks import Deck
+from spireslayer.deck import Deck
 from spireslayer.card import Card
 
 editor = Editor()

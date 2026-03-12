@@ -4,7 +4,7 @@ import os
 from typing import Optional, Any
 
 from .card import Card
-from .decks import Deck
+from .deck import Deck
 
 
 class Editor(object):

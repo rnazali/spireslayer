@@ -1,4 +1,4 @@
-from spireslayer.decks import ExampleDeck
+from spireslayer.deck import ExampleDeck
 from spireslayer.editor import Editor
 
 if __name__ == '__main__':

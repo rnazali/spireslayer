@@ -1,5 +1,5 @@
 from spireslayer.card import Card
-from spireslayer.decks import Deck
+from spireslayer.deck import Deck
 
 
 def test_default_deck():
