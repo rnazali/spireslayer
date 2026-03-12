@@ -13,8 +13,9 @@ class Editor:
     encryption_key: str = "key"
     path: str
     autosave_path: str
-    _encoded: str
-    _json: dict
+
+    _encoded: str  # encoded autosave data (i.e. obfuscated)
+    _decoded: dict  # decoded autosave data (i.e. json dict)
 
     def __init__(
             self,
@@ -36,8 +37,8 @@ class Editor:
             self.path = os.path.join(self.installation_path, self.save_folder_name)
             self.autosave_path = self.find_autosave_file()
 
-        self.encoded: str = self.read_autosave()
-        self.json = self.decode()
+        self.encoded = self.read_autosave()
+        self.decoded = self.decode()
 
     @property
     def encoded(self):
@@ -48,12 +49,12 @@ class Editor:
         self._encoded = value
 
     @property
-    def json(self):
-        return self._json
+    def decoded(self):
+        return self._decoded
 
-    @json.setter
-    def json(self, value: dict):
-        self._json = value
+    @decoded.setter
+    def decoded(self, value: dict):
+        self._decoded = value
 
     def find_autosave_file(self):
         assert os.path.isdir(self.path), f"Path {self.path} doesn't exist"
@@ -89,8 +90,8 @@ class Editor:
         return json.loads(plain_json_string)
 
     def encode(self) -> bytes:
-        assert self._json is not None, "JSON save data is None"
-        plain_json_string: str = json.dumps(self._json)
+        assert self._decoded is not None, "JSON save data is None"
+        plain_json_string: str = json.dumps(self._decoded)
         assert isinstance(plain_json_string, str)
 
         decoded_char_list: list = list()
@@ -103,7 +104,7 @@ class Editor:
         return final_data
 
     def update_attribute(self, attribute_name: str, value: Any) -> None:
-        self._json[attribute_name] = value
+        self._decoded[attribute_name] = value
 
     def update_current_health(self, health: int = 72):
         self.update_attribute('current_health', health)
@@ -124,4 +125,4 @@ class Editor:
         self.update_attribute('cards', deck.json)
 
     def add_card(self, card: Card):
-        self._json['cards'].append(card.json)
+        self._decoded['cards'].append(card.json)
