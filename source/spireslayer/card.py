@@ -193,11 +193,9 @@ class Card:
         DEFRAGMENT = "Defragment"
         CAPACITOR = "Capacitor"
 
-        # lightning
         ZAP = "Zap"
         THUNDER_STRIKE = "Thunder Strike"
 
-        # ice
         COLD_SNAP = "Cold Snap"
         BLIZZARD = "Blizzard"
         GLACIER = "Glacier"
@@ -250,7 +248,7 @@ class Card:
         PERSEVERANCE = "Perseverance"
         PRAY = "Pray"
         REACH_HEAVEN = "Reach Heaven"
-        RUSHDOWN = "Rushdown"  # Known issue: https://github.com/rahmatnazali/spireslayer/issues/13
+        RUSHDOWN = "Rushdown"
         SANCTITY = "Sanctity"
         SANDS_OF_TIME = "Sands of Time"
         SIGNATURE_MOVE = "Signature Move"
