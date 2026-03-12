@@ -39,7 +39,7 @@ class Card:
         IRON_WAVE = "Iron Wave"
         PERFECTED_STRIKE = "Perfected Strike"
         POMMEL_STRIKE = "Pommel Strike"
-        SHRUG_IT_OFF = "Shrug it Off"
+        SHRUG_IT_OFF = "Shrug It Off"
         SWORD_BOOMERANG = "Sword Boomerang"
         THUNDERCLAP = "Thunderclap"
         TRUE_GRIT = "True Grit"
