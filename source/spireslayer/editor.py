@@ -35,7 +35,7 @@ class Editor:
             if save_folder:
                 self.save_folder_name = save_folder
             self.path = os.path.join(self.installation_path, self.save_folder_name)
-            self.autosave_path = self.find_autosave_file()
+            self.autosave_path = self.find_autosave()
 
         self.encoded = self.read_autosave()
         self.decoded = self.decode()
@@ -56,7 +56,7 @@ class Editor:
     def decoded(self, value: dict):
         self._decoded = value
 
-    def find_autosave_file(self):
+    def find_autosave(self) -> str:
         assert os.path.isdir(self.path), f"Path {self.path} doesn't exist"
         possible_save_files = os.listdir(self.path)
         for filename in possible_save_files:
@@ -65,6 +65,7 @@ class Editor:
         raise ValueError(f"No .autosave file found on {self.path}")
 
     def read_autosave(self):
+        assert os.path.exists(self.autosave_path), f"Path {self.autosave_path} doesn't exist"
         with open(self.autosave_path, 'r') as autosave_file:
             content = autosave_file.readline()
             assert content is not None, "Encoded data is empty"
