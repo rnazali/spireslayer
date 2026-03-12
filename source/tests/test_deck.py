@@ -10,9 +10,9 @@ def test_default_deck():
 
 
 def test_custom_deck():
-    card1 = Card(id="1")
-    card2 = Card(id="2")
-    card3 = Card(id="3")
+    card1 = Card(card_id="1")
+    card2 = Card(card_id="2")
+    card3 = Card(card_id="3")
     deck = Deck(card_list=[
         card1,
         card2,
@@ -34,7 +34,7 @@ def test_custom_deck():
 
 def test_add_card():
     deck = Deck()
-    card = Card(id="1")
+    card = Card(card_id="1")
 
     assert len(deck.card_list) == 0
     deck.add_card(card)

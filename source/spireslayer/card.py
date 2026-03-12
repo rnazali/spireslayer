@@ -1,9 +1,8 @@
-class Card(object):
-    def __init__(self, id: str, misc: int = 0, upgrades: int = 1) -> None:
-        super().__init__()
-        self.id = id
-        self.misc = misc
-        self.upgrades = upgrades
+class Card:
+    def __init__(self, card_id: str, upgrade: bool = True) -> None:
+        self.id = card_id
+        self.misc = 0  # currently unused, hidden from outside
+        self.upgrades = 1 if upgrade else 0
 
     def to_json(self):
         return {
