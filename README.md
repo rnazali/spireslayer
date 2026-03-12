@@ -91,7 +91,7 @@ editor.update_attribute('hand_size', 10)
 
 # After customization is finished, call this method to rewrite the save data back to the original place.
 # WARNING: The old save file will be replaced.
-editor.write_json_to_file()
+editor.save()
 ```
 
 ### 3. Run the editor

@@ -17,4 +17,4 @@ if __name__ == '__main__':
     editor.set_deck(ExampleDeck.watcher_flash())
 
     # After customization is finished, call this method to rewrite the save data back to where it belongs
-    editor.write_json_to_file()
+    editor.save()

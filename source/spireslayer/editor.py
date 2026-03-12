@@ -71,7 +71,7 @@ class Editor:
             assert content is not None, "Encoded data is empty"
             return content
 
-    def write_json_to_file(self):
+    def save(self):
         print(f"Writing new save data to {self.autosave_path}")
         with open(self.autosave_path, 'wb') as save_file:
             new_save_data = self.encode()
