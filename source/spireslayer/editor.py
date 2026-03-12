@@ -13,16 +13,16 @@ class Editor:
     encryption_key: str = "key"
     path: str
     autosave_path: str
-    encoded_save_data: str
+    encoded_json: str
     _encoded: str
     _json: dict
 
     def __init__(
             self,
             installation_path: Optional[str] = None,
-            save_folder_name: Optional[str] = None,
-            encryption_key: Optional[str] = None,
+            save_folder: Optional[str] = None,
             autosave_path: Optional[str] = None,
+            encryption_key: Optional[str] = None,
     ) -> None:
         if encryption_key:
             self.encryption_key = encryption_key
@@ -32,13 +32,13 @@ class Editor:
         else:
             if installation_path:
                 self.installation_path = installation_path
-            if save_folder_name:
-                self.save_folder_name = save_folder_name
+            if save_folder:
+                self.save_folder_name = save_folder
             self.path = os.path.join(self.installation_path, self.save_folder_name)
             self.autosave_path = self.find_autosave_file()
 
-        self.encoded_save_data: str = self.load_encoded_save_data_from_file()
-        self._json = self.save_to_json()
+        self.encoded_json: str = self.read_autosave()
+        self.json = self.convert_save_to_json()
 
     @property
     def json(self):
@@ -56,20 +56,20 @@ class Editor:
                 return os.path.join(self.path, filename)
         raise ValueError(f"No .autosave file found on {self.path}")
 
-    def load_encoded_save_data_from_file(self):
+    def read_autosave(self):
         with open(self.autosave_path, 'r') as autosave_file:
             content = autosave_file.readline()
-            assert content is not None, "Encoded save data is empty"
+            assert content is not None, "Encoded data is empty"
             return content
 
     def write_json_to_file(self):
         print(f"Writing new save data to {self.autosave_path}")
         with open(self.autosave_path, 'wb') as save_file:
-            new_save_data = self.json_to_save()
+            new_save_data = self.convert_json_to_save()
             save_file.write(new_save_data)
 
-    def save_to_json(self) -> dict:
-        base64_decoded_save_file: bytes = base64.b64decode(self.encoded_save_data)
+    def convert_save_to_json(self) -> dict:
+        base64_decoded_save_file: bytes = base64.b64decode(self.encoded_json)
         json_char_list: list = list()
 
         for i, obfuscated_data in enumerate(base64_decoded_save_file):
@@ -81,7 +81,7 @@ class Editor:
         plain_json_string: str = ''.join(json_char_list)
         return json.loads(plain_json_string)
 
-    def json_to_save(self) -> bytes:
+    def convert_json_to_save(self) -> bytes:
         assert self._json is not None, "JSON save data is None"
         plain_json_string: str = json.dumps(self._json)
         assert isinstance(plain_json_string, str)
