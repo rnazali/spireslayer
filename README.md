@@ -23,10 +23,9 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
 
 ## Get started
 
-**This goes without saying, but this procedure may break your current save file.**
-
-I've been using this often.
-At worst, this will only break your current run. Other progress outside the run will be fine.
+> [!CAUTION]
+> This goes without saying, but this procedure may break your current run save.
+> At worst, this will only break your current run. Other progress outside the run will be fine.
 
 ### 1. Install
 
