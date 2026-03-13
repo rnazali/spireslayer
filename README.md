@@ -57,12 +57,9 @@ editor = Editor(
 )
 ```
 
-### 2. Create your editor script
-
-Create your own editor behavior by importing the `SaveEditor` to your python script:
+### 3. Modifying save state
 
 ```python
-# defect_editor.py
 
 from spireslayer.editor import Editor
 from spireslayer.deck import Deck
@@ -70,38 +67,30 @@ from spireslayer.card import Card
 
 editor = Editor()
 
-# let's start by creating a custom powerful deck for our Defect
+# update your deck
 editor.deck(
     Deck([
         Card(Card.Defect.GLACIER),
         Card(Card.Defect.GLACIER),
         Card(Card.Defect.GLACIER),
         Card(Card.Defect.DEFRAGMENT),
-        Card(Card.Defect.DEFRAGMENT),
-        Card(Card.Defect.DEFRAGMENT),
-        Card(Card.Defect.BLIZZARD),
-        Card(Card.Defect.BLIZZARD),
-        Card(Card.Defect.BLIZZARD),
         Card(Card.Defect.BLIZZARD),
         Card(Card.Defect.BLIZZARD),
     ]))
 
-# or maybe increase our Defect's max orb
-editor.max_orbs(15)
-
-# or basically anything you need
-editor.current_health(400)
-editor.max_health(500)
+# or anything you need
+editor.max_orbs(10)
+editor.max_health(250)
+editor.current_health(100)
 editor.hand_size(10)
-editor.energy(20)
+editor.energy(5)
 
-# for attributes that are not yet provided within the package's method,
-# please use the `update` method.
-# You can find the key for each attribute in the example JSON save file provided in this project
+# for attributes that are not yet provided within the package's method, you can use the `update` method
+# you can find the key for each attribute in the example JSON save file provided in this project
 editor.update('current_health', 90)
 editor.update('hand_size', 10)
 
-# After customization is finished, call this method to rewrite the save data back to the original place.
+# After any customization is finished, call this method to rewrite the save data back to the original place.
 # WARNING: The old save file will be replaced.
 editor.save()
 ```
