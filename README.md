@@ -8,8 +8,7 @@ too much time to be wasted.
 ## Current state
 
 - Deck/Card editor are generally supported
-  - Some cards have different ID than its name and may not work when imported. This issue
-    is [being tracked on #18](https://github.com/rnazali/spireslayer/issues/18)
+  - Some cards [may not work when imported ](https://github.com/rnazali/spireslayer/issues/18)
 - Relic editor is planned
 - Integration to [the sequel](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) is planned!
   - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
