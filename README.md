@@ -1,5 +1,4 @@
 [Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) faster by editing the save file!
-
 Test your dream deck, or tweak just as needed to keep the fun while avoiding too much time to be wasted.
 
 ![](assets/result-2.jpg)
