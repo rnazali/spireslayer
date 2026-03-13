@@ -1,134 +1,179 @@
-[Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) _faster_ by editing the save file! If done right, this will keep the fun while avoiding 
-too much time to be wasted.
-
 ![](assets/result-2.jpg)
 ![](assets/result-1.jpg)
 
-## How the script works
-- It starts by finding the obfuscated autosave file that named with this format: `<Name of the character>.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
-- The `SaveEditor` object will decrypt the save data and convert it to an editable [JSON object format](example/readable_save_file.json).
-- At this point, you can edit the json object as needed.
-- Finally, call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format, replacing the old one.
+[Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) faster by editing the save file!
+Test your dream deck, or tweak just as needed to keep the fun while avoiding too much time to be wasted.
 
-## How to use the package
+## Current state
 
-### 1. Install & Identify
+- Deck/Card editor are generally supported
+  - Some cards [may not work when imported ](https://github.com/rnazali/spireslayer/issues/18)
+- Relic and Potion editor is planned
+- Integration to [the sequel](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) is planned!
+  - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
+    have the game yet.
+  - If you are kind enough to send a sample of your autosave file, please create an issue!
+
+## How it works
+
+1. `Editor` will find `*.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
+2. `Editor` will decode the save data and convert it to an editable [JSON object format](example/DEFECT_decoded.json).
+3. Now you can edit the decoded save data as needed.
+4. Finally, call the `Editor.save()` to encode the save data back, replacing the old one.
+
+## Get started
+
+> [!CAUTION]
+> This goes without saying, but using the Editor carelessly may break your current run.
+> At worst, you break your current run, and can safely restart a fresh run.
+> Other progress outside the run, like achievements or unlocks, are left untouched.
+
+### 1. Install
 
 Install the package with `pip install spireslayer`.
 
-Identify your game installation path.
+### 2. Identify installation path
 
-This package assumes the Steam default installation on Windows: `C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire`.
+On most of the case, the game will be installed on `C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire`.
+If this is your case, skip to the next step. If not, take a note on your installed path.
 
-If your installation happened to be using the default, then you don't need to pass any arguments when calling the `SaveEditor`. 
-The package will handle it for you:
+On Linux, it will usually be `/home/<user>/.steam/debian-installation/steamapps/common/SlayTheSpire`.
 
-```python3
-from spireslayer.save_editor import SaveEditor
+### 3. Initializing the editor
 
-save_editor = SaveEditor()
-```
-
-For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` object:
+Open up a python script and start coding:
 
 ```python3
-from spireslayer.save_editor import SaveEditor
+from spireslayer.editor import Editor
 
-# custom Windows path
-save_editor = SaveEditor(
-    installation_path="D:\\MyGames\\SlayTheSpire",
+# with default installation path, no need to supply additional parameter
+editor = Editor()
+
+# for custom Windows path, add installation_path
+# note the string literal r'' for better readability
+editor = Editor(
+  installation_path=r"D:\MyGames\SlayTheSpire",
 )
 
-# or linux path
-save_editor = SaveEditor(
+# or maybe custom linux path
+editor = Editor(
     installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
 )
 ```
 
-### 2. Create your editor script
-
-Create your own editor behavior by importing the `SaveEditor` to your python script:
+### 4. Modifying save state
 
 ```python
-# defect_editor.py
 
-from spireslayer.save_editor import SaveEditor
-from spireslayer.decks import Deck
+from spireslayer.editor import Editor
+from spireslayer.deck import Deck
 from spireslayer.card import Card
-from spireslayer.templates.defect_card import GLACIER, DEFRAGMENT, BLIZZARD
 
-save_editor = SaveEditor()
+editor = Editor()
 
-# let's start by creating a custom powerful deck for our Defect
-save_editor.set_deck(Deck([
-    Card(GLACIER),
-    Card(GLACIER),
-    Card(GLACIER),
-    Card(DEFRAGMENT),
-    Card(DEFRAGMENT),
-    Card(DEFRAGMENT),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-    Card(BLIZZARD),
-]))
+# update your deck
+editor.deck(
+    Deck([
+        Card(Card.Defect.GLACIER),
+        Card(Card.Defect.GLACIER),
+        Card(Card.Defect.GLACIER),
+        Card(Card.Defect.DEFRAGMENT),
+        Card(Card.Defect.BLIZZARD),
+        Card(Card.Defect.BLIZZARD),
+    ]))
 
-# or maybe increase our Defect's max orb
-save_editor.update_max_orbs(15)
+# or anything you need
+editor.max_orbs(10)
+editor.max_health(250)
+editor.current_health(100)
+editor.hand_size(10)
+editor.energy(5)
 
-# or basically anything you need
-save_editor.update_current_health(400)
-save_editor.update_max_health(500)
-save_editor.update_hand_size(10)
-save_editor.update_energy_per_turn(20)
+# for attributes that are not yet provided within the package's method, you can use the `update` method
+# you can find the key for each attribute in the dumping session below
+editor.update('current_health', 90)
+editor.update('hand_size', 10)
 
-# for attributes that are not yet provided within the package's method,
-# please use the `update_attribute` method.
-# You can find the key for each attribute in the example JSON save file provided in this project
-save_editor.update_attribute('current_health', 90)
-save_editor.update_attribute('hand_size', 10)
-
-# After customization is finished, call this method to rewrite the save data back to the original place.
+# After any customization is finished, call this method to rewrite the save data back to the original place.
 # WARNING: The old save file will be replaced.
-save_editor.write_json_to_file()
+editor.save()
 ```
 
-### 3. Run the editor
+### 5. Run your script
 
 - Open the game. Create a new game or continue any session. 
-- On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
-- From the main menu, switch to the script and run it. Closing the game is actually unnecessary.
+- On the first encounter after loading the game, hit the menu and choose `Save & Quit`. Closing the game is actually
+  unnecessary.
+- From the main menu, switch to the script and run it.
 - Switch back to the game and click `Continue`. 
 - Enjoy the game!
 
-## Notes
-- This package now supports Colorless Card, and nearly all 4 playable hero's cards (thanks [@gabrekt](https://github.com/gabrekt)!).
-- There is a [know issue](https://github.com/rahmatnazali/spireslayer/issues/13) with the Watcher's Rushdown Card not being correctly recognized.
-- For any change that are not yet supported within the package, please use the provided API `SaveEditor.get_json()` and 
-change it directly.
-For example:
+### Extra 1: dumping your save file
 
-    ```python3
-    from spireslayer.save_editor import SaveEditor
-    
-    save_editor = SaveEditor()
-    
-    save_file = save_editor.get_json()
-    save_file['current_health'] = 1000
-    save_file['some-key'] = 'something-something'
-    
-    # don't forget to give it back to the save_editor
-    save_editor.set_json(save_file)
-    
-    save_editor.write_json_to_file()
-    ```
+`Editor.dumps()` is provided for dumping the decode save data to output stream.
+This can be useful to understand the whole structure in general, or to flexibly modify it.
 
-    Refer to the [readable save file example](example/readable_save_file.json) for more available keys.
+```python3
+from spireslayer.editor import Editor
 
-- PR is always appreciated!
+editor = Editor()
+editor.dumps()
 
-## Disclaimer
+# output
+{
+  'act_num': 2,
+  'ai_seed_count': 0,
+  'ascension_level': 0,
+  'blight_counters': [],
+  'blights': [],
+  'blue': 0,
+  # ...
+  'relics': [
+    'PureWater',
+  ],
+  # ...
+}
+```
 
-I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. 
-What I did was only rewriting it in python and adding modularity of the save editor.
+So for example, this _might_ work, but untested right now:
+
+```python3
+from spireslayer.editor import Editor
+
+editor = Editor()
+
+# add some relics
+editor.update('relics', [
+  'PureWater',
+  'Vajra',
+  'SsserpentHead',
+  'PreservedInsect',
+  'Ectoplasm'
+])
+
+editor.save()
+```
+
+Refer to the [decoded save file example](example/DEFECT_decoded.json) for more example of the available keys.
+
+### Extra 2: use the provided deck
+
+`ExampleDeck` is provided with several archetypes that you can use as a baseline.
+
+```python3
+from spireslayer.editor import Editor
+from spireslayer.deck import ExampleDeck
+
+editor = Editor()
+editor.deck(ExampleDeck.ironclad_block())
+editor.save()
+```
+
+The code above will give the famous _Barricade/Entrench/BodySlam_ deck.
+
+## Thank you!
+
+- [Kirill98](https://gist.github.com/Kirill89) for
+  the [encryption script](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877), as this project is
+  impossible without it
+- [gabrekt](https://github.com/gabrekt) for providing the majority of the cards, including colorless cards
