@@ -1,5 +1,16 @@
-[Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) _faster_ by editing the save file! If done right, this will keep the fun while avoiding 
+[Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) faster by editing the save file!
+If done right, this will keep the fun while avoiding
 too much time to be wasted.
+
+Current state:
+
+- Deck/Card editor are generally supported
+  - Some cards have different ID than its name and may not work when imported. This issue is being tracked on #18
+- Relic editor is planned
+- Integration to [the sequel](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) is planned!
+  - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
+    have the game yet.
+  - If you are kind enough to send a sample of your autosave file, please create an issue!
 
 ![](assets/result-2.jpg)
 ![](assets/result-1.jpg)
