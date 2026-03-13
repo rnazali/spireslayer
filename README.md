@@ -15,12 +15,12 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
     have the game yet.
   - If you are kind enough to send a sample of your autosave file, please create an issue!
 
-## How the script works
-- It starts by finding the obfuscated autosave file that named with this format: `<Name of the character>.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
-- The `SaveEditor` object will decrypt the save data and convert it to an
-  editable [JSON object format](example/DEFECT_decoded.json).
-- At this point, you can edit the json object as needed.
-- Finally, call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format, replacing the old one.
+## How it works
+
+1. `Editor` will find `*.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
+2. `Editor` will decode the save data and convert it to an editable [JSON object format](example/DEFECT_decoded.json).
+3. Now you can edit the decoded save data as needed.
+4. Finally, call the `Editor.save()` to encode the save data back, replacing the old one.
 
 ## Get started
 
