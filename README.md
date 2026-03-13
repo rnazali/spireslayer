@@ -22,36 +22,36 @@ too much time to be wasted.
 - At this point, you can edit the json object as needed.
 - Finally, call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format, replacing the old one.
 
-## How to use the package
+## Get started
 
-### 1. Install & Identify
+### 1. Install
 
 Install the package with `pip install spireslayer`.
 
-Identify your game installation path.
+### 2. Identify installation path
 
-This package assumes the Steam default installation on Windows: `C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire`.
+On most of the case, the game will be installed on `C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire`.
+If this is your case, skip to the next step. If not, take a note on your installed path.
 
-If your installation happened to be using the default, then you don't need to pass any arguments when calling the `SaveEditor`. 
-The package will handle it for you:
+On Linux, it will usually be `/home/<user>/.steam/debian-installation/steamapps/common/SlayTheSpire`.
+
+### 3. Initializing the editor
+
+Open up a python script and start coding:
 
 ```python3
 from spireslayer.editor import Editor
 
+# with default installation path, no need to supply additional parameter
 editor = Editor()
-```
 
-For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` object:
-
-```python3
-from spireslayer.editor import Editor
-
-# custom Windows path
+# for custom Windows path, add installation_path
+# note the string literal r'' for better readability
 editor = Editor(
-    installation_path="D:\\MyGames\\SlayTheSpire",
+  installation_path=r"D:\MyGames\SlayTheSpire",
 )
 
-# or linux path
+# or maybe custom linux path
 editor = Editor(
     installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
 )
