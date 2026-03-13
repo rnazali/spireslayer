@@ -25,7 +25,7 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
 
 > [!CAUTION]
 > This goes without saying, but using the Editor carelessly may break your current run.
-> At worst, current run is broken, and you can safely restart a fresh run.
+> At worst, you break your current run, and can safely restart a fresh run.
 > Other progress outside the run, like achievement or unlocks, are left untouched.
 
 ### 1. Install
