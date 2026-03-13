@@ -26,7 +26,7 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
 > [!CAUTION]
 > This goes without saying, but this procedure may break the run's save.
 > At worst, this will only break your current run, and you may safely restart a fresh run.
-_> Other progress outside the run will be fine._
+> Other progress outside the run will be fine.
 
 ### 1. Install
 
