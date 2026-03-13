@@ -9,7 +9,7 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
 
 - Deck/Card editor are generally supported
   - Some cards [may not work when imported ](https://github.com/rnazali/spireslayer/issues/18)
-- Relic editor is planned
+- Relic and Potion editor is planned
 - Integration to [the sequel](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) is planned!
   - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
     have the game yet.
