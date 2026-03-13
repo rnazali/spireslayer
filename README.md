@@ -171,7 +171,7 @@ editor.save()
 
 The code above will give the famous _Barricade/Entrench/BodySlam_ deck.
 
-## Thank you
+## Thank you!
 
 - [Kirill98](https://gist.github.com/Kirill89) for
   the [encryption script](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877), as this project is
