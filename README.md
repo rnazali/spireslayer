@@ -157,6 +157,21 @@ editor.save()
 
 Refer to the [decoded save file example](example/DEFECT_decoded.json) for more example of the available keys.
 
+### Extra 2: use the provided deck
+
+`ExampleDeck` is provided with several archetypes that you can use as a baseline.
+
+```python3
+from spireslayer.editor import Editor
+from spireslayer.deck import ExampleDeck
+
+editor = Editor()
+editor.deck(ExampleDeck.ironclad_block())
+editor.save()
+```
+
+The code above will give the famous _Barricade/Entrench/BodySlam_ deck.
+
 ## Thank you
 
 - [Kirill98](https://gist.github.com/Kirill89) for
