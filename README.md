@@ -18,7 +18,7 @@ too much time to be wasted.
 ## How the script works
 - It starts by finding the obfuscated autosave file that named with this format: `<Name of the character>.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
 - The `SaveEditor` object will decrypt the save data and convert it to an
-  editable [JSON object format](example/DEFECT_readable.json).
+  editable [JSON object format](example/DEFECT_decoded.json).
 - At this point, you can edit the json object as needed.
 - Finally, call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format, replacing the old one.
 
@@ -86,7 +86,7 @@ editor.hand_size(10)
 editor.energy(5)
 
 # for attributes that are not yet provided within the package's method, you can use the `update` method
-# you can find the key for each attribute in the example JSON save file provided in this project
+# you can find the key for each attribute in the dumping session below
 editor.update('current_health', 90)
 editor.update('hand_size', 10)
 
@@ -95,41 +95,66 @@ editor.update('hand_size', 10)
 editor.save()
 ```
 
-### 3. Run the editor
+### 4. Run your script
 
 - Open the game. Create a new game or continue any session. 
-- On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
-- From the main menu, switch to the script and run it. Closing the game is actually unnecessary.
+- On the first encounter after loading the game, hit the menu and choose `Save & Quit`. Closing the game is actually
+  unnecessary.
+- From the main menu, switch to the script and run it.
 - Switch back to the game and click `Continue`. 
 - Enjoy the game!
 
-## Notes
-- This package now supports Colorless Card, and nearly all 4 playable hero's cards (thanks [@gabrekt](https://github.com/gabrekt)!).
-- There is a [know issue](https://github.com/rahmatnazali/spireslayer/issues/13) with the Watcher's Rushdown Card not being correctly recognized.
-- For any change that are not yet supported within the package, please use the provided API `SaveEditor.get_json()` and
-  change it directly.
-  For example:
+### Extra: dumping your save file
 
-    ```python3
+We supplied `Editor.dumps()` for dumping the decode save data to output stream.
+This can be useful to understand the whole structure in general, or to flexibly modify it.
 
-from spireslayer.editor import SaveEditor
+```python3
+from spireslayer.editor import Editor
 
-save_editor = SaveEditor()
+editor = Editor()
+editor.dumps()
 
-save_file = save_editor.get_json()
-save_file['current_health'] = 1000
-save_file['some-key'] = 'something-something'
+# output
+{
+  'act_num': 2,
+  'ai_seed_count': 0,
+  'ascension_level': 0,
+  'blight_counters': [],
+  'blights': [],
+  'blue': 0,
+  # ...
+  'relics': ['PureWater',
+             'Vajra',
+             'SsserpentHead',
+             'PreservedInsect',
+             'Ectoplasm'
+             ],
+  # ...
 
-# don't forget to give it back to the save_editor
+}
+```
 
-save_editor.set_json(save_file)
+So for example, this _might_ work, but untested right now:
 
-save_editor.write_json_to_file()
-    ```
+```python3
+from spireslayer.editor import Editor
 
-  Refer to the [readable save file example](example/DEFECT_readable.json) for more available keys.
+editor = Editor()
 
-- PR is always appreciated!
+# add some relics
+editor.update('relics', [
+  'PureWater',
+  'Vajra',
+  'SsserpentHead',
+  'PreservedInsect',
+  'Ectoplasm'
+])
+
+editor.save()
+```
+
+Refer to the [decoded save file example](example/DEFECT_decoded.json) for more example of the available keys.
 
 ## Thank you
 
