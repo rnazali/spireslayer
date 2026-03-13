@@ -224,11 +224,11 @@ class Card:
         FOLLOW_UP = "Follow-Up"
         HALT = "Halt"
         JUST_LUCKY = "Just Lucky"
-        PRESSURE_POINTS = "Pressure Points"
+        PRESSURE_POINTS = "PathToVictory"
         PROSTRATE = "Prostrate"
         PROTECT = "Protect"
         SASH_WHIP = "Sash Whip"
-        THIRD_EYE = "Third Eye"
+        THIRD_EYE = "ThirdEye"
         TRANQUILITY = "Tranquility"
 
         # Uncommon Cards
@@ -273,7 +273,7 @@ class Card:
         BLASPHEMY = "Blasphemy"
         BRILLIANCE = "Brilliance"
         CONJURE_BLADE = "ConjureBlade"
-        DEUS_EX_MACHINA = "Deus Ex Machina"
+        DEUS_EX_MACHINA = "DeusExMachina"
         DEVA_FORM = "Deva Form"
         DEVOTION = "Devotion"
         ESTABLISHMENT = "Establishment"
