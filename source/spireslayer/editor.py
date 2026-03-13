@@ -149,6 +149,6 @@ class Editor:
         self.decoded[self.Attribute.CARDS].append(card.json)
         return self
 
-    def debug(self):
+    def dumps(self):
         print(self.autosave_path)
         pprint(self.decoded, indent=4)
