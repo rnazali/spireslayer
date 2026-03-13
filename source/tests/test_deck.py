@@ -1,5 +1,5 @@
 from spireslayer.card import Card
-from spireslayer.deck import Deck
+from spireslayer.deck import Deck, ExampleDeck
 
 
 def test_default_deck():
@@ -44,3 +44,10 @@ def test_add_card():
     assert len(deck.cards) == 1
     assert deck.cards == [card]
     assert deck.json == [card.json]
+
+
+def test_example_deck():
+    deck = ExampleDeck.watcher_calm_wrath()
+    assert deck.json == [{'id': 'Adaptation', 'misc': 0, 'upgrades': 1}, {'id': 'Eruption', 'misc': 0, 'upgrades': 1},
+                         {'id': 'Indignation', 'misc': 0, 'upgrades': 1}]
+    assert len(deck.cards) == 3
