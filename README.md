@@ -24,6 +24,11 @@ too much time to be wasted.
 
 ## Get started
 
+**This goes without saying, but this procedure may break your current save file.**
+
+I've been using this often.
+At worst, this will only break your current run. Other progress outside the run will be fine.
+
 ### 1. Install
 
 Install the package with `pip install spireslayer`.
