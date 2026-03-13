@@ -62,7 +62,7 @@ editor = Editor(
 )
 ```
 
-### 3. Modifying save state
+### 4. Modifying save state
 
 ```python
 
@@ -100,7 +100,7 @@ editor.update('hand_size', 10)
 editor.save()
 ```
 
-### 4. Run your script
+### 5. Run your script
 
 - Open the game. Create a new game or continue any session. 
 - On the first encounter after loading the game, hit the menu and choose `Save & Quit`. Closing the game is actually
