@@ -108,7 +108,7 @@ editor.save()
 - Switch back to the game and click `Continue`. 
 - Enjoy the game!
 
-### Extra: dumping your save file
+### Extra 1: dumping your save file
 
 `Editor.dumps()` is provided for dumping the decode save data to output stream.
 This can be useful to understand the whole structure in general, or to flexibly modify it.
