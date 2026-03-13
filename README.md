@@ -132,7 +132,6 @@ editor.dumps()
     'PureWater',
   ],
   # ...
-
 }
 ```
 
