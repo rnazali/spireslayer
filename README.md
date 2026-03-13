@@ -2,7 +2,7 @@
 If done right, this will keep the fun while avoiding
 too much time to be wasted.
 
-Current state:
+## Current state
 
 - Deck/Card editor are generally supported
   - Some cards have different ID than its name and may not work when imported. This issue
