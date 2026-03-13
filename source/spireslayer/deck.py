@@ -143,6 +143,20 @@ class ExampleDeck:
         ])
 
     @staticmethod
+    def watcher_defensive():
+        return Deck([
+            Card(Card.Watcher.TANTRUM),
+            Card(Card.Watcher.INNER_PEACE),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.HALT),
+            Card(Card.Watcher.MENTAL_FORTRESS),
+            Card(Card.Watcher.PRESSURE_POINTS),
+        ])
+
+    @staticmethod
     def watcher_calm_neutral():
         return Deck([
             Card(Card.Watcher.INNER_PEACE),
