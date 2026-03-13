@@ -129,12 +129,9 @@ editor.dumps()
   'blights': [],
   'blue': 0,
   # ...
-  'relics': ['PureWater',
-             'Vajra',
-             'SsserpentHead',
-             'PreservedInsect',
-             'Ectoplasm'
-             ],
+  'relics': [
+    'PureWater',
+  ],
   # ...
 
 }
