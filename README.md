@@ -111,7 +111,7 @@ editor.save()
 
 ### Extra: dumping your save file
 
-We supplied `Editor.dumps()` for dumping the decode save data to output stream.
+`Editor.dumps()` is provided for dumping the decode save data to output stream.
 This can be useful to understand the whole structure in general, or to flexibly modify it.
 
 ```python3
