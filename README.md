@@ -2,6 +2,9 @@
 If done right, this will keep the fun while avoiding
 too much time to be wasted.
 
+![](assets/result-2.jpg)
+![](assets/result-1.jpg)
+
 ## Current state
 
 - Deck/Card editor are generally supported
@@ -12,9 +15,6 @@ too much time to be wasted.
   - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
     have the game yet.
   - If you are kind enough to send a sample of your autosave file, please create an issue!
-
-![](assets/result-2.jpg)
-![](assets/result-1.jpg)
 
 ## How the script works
 - It starts by finding the obfuscated autosave file that named with this format: `<Name of the character>.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
