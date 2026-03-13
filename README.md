@@ -143,7 +143,9 @@ save_editor.write_json_to_file()
 
 - PR is always appreciated!
 
-## Disclaimer
+## Thank you
 
-I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. 
-What I did was only rewriting it in python and adding modularity of the save editor.
+- [Kirill98](https://gist.github.com/Kirill89) for
+  the [encryption script](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877), as this project is
+  impossible without it
+- [gabrekt](https://github.com/gabrekt) for providing the majority of the cards, including colorless cards
