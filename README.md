@@ -79,7 +79,7 @@ editor.deck(
 editor.max_orbs(15)
 
 # or basically anything you need
-editor.update_current_health(400)
+editor.current_health(400)
 editor.max_health(500)
 editor.hand_size(10)
 editor.energy(20)

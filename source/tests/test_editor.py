@@ -28,7 +28,7 @@ def test_update_current_health():
     editor = Editor(autosave_path=autosave_path)
     original_health = editor.decoded['current_health']
     assert original_health == 500
-    editor.update_current_health(100)
+    editor.current_health(100)
     new_health = editor.decoded['current_health']
     assert original_health != new_health
     assert new_health == 100

@@ -121,7 +121,7 @@ class Editor:
         self.decoded[attribute_name] = value
         return self
 
-    def update_current_health(self, current_health: int = 72):
+    def current_health(self, current_health: int = 72):
         self.update(self.Attribute.CURRENT_HEALTH, current_health)
         return self
 
