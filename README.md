@@ -10,8 +10,7 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
   - Some cards [may not work when imported ](https://github.com/rnazali/spireslayer/issues/18)
 - Relic and Potion editor is planned
 - Integration to [the sequel](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) is planned!
-  - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
-    have the game yet.
+  - To start reverse engineering, we need to obtain a sample of autosave file. We currently don't have the game yet.
   - If you are kind enough to send a sample of your autosave file, please create an issue!
 
 ## How it works
@@ -35,9 +34,9 @@ Install the package with `pip install spireslayer`.
 ### 2. Identify installation path
 
 On most of the case, the game will be installed on `C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire`.
-If this is your case, skip to the next step. If not, take a note on your installed path.
+If this is your case, jump to the next step. If not, take a note on your installed path.
 
-On Linux, it will usually be `/home/<user>/.steam/debian-installation/steamapps/common/SlayTheSpire`.
+This will vary by OS. For example in Debian it will usually be `/home/<user>/.steam/debian-installation/steamapps/common/SlayTheSpire`.
 
 ### 3. Initializing the editor
 
@@ -111,7 +110,7 @@ editor.save()
 ### Extra 1: dumping your save file
 
 `Editor.dumps()` is provided for dumping the decode save data to output stream.
-This can be useful to understand the whole structure in general, or to flexibly modify it.
+This can be useful to understand the whole structure in general as your baseline.
 
 ```python3
 from spireslayer.editor import Editor
@@ -176,4 +175,3 @@ The code above will give the famous _Barricade/Entrench/BodySlam_ deck.
 - [Kirill98](https://gist.github.com/Kirill89) for
   the [encryption script](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877), as this project is
   impossible without it
-- [gabrekt](https://github.com/gabrekt) for providing the majority of the cards, including colorless cards
