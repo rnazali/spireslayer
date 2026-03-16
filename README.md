@@ -175,3 +175,4 @@ The code above will give the famous _Barricade/Entrench/BodySlam_ deck.
 - [Kirill98](https://gist.github.com/Kirill89) for
   the [encryption script](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877), as this project is
   impossible without it
+- [gabrekt](https://github.com/gabrekt) for providing the majority of the cards, including colorless cards
