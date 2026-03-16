@@ -10,8 +10,8 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
   - Some cards [may not work when imported ](https://github.com/rnazali/spireslayer/issues/18)
 - Relic and Potion editor is planned
 - Integration to [the sequel](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) is planned!
-  - To start reverse engineering, we need to obtain the distributed game files and a sample of autosave file. We don't
-    have the game yet.
+  - To start reverse engineering, we need to obtain a sample of autosave file. We plan to but currently don't have
+    access to the game yet.
   - If you are kind enough to send a sample of your autosave file, please create an issue!
 
 ## How it works
@@ -25,7 +25,7 @@ Test your dream deck, or tweak just as needed to keep the fun while avoiding too
 
 > [!CAUTION]
 > This goes without saying, but using the Editor carelessly may break your current run.
-> At worst, you break your current run, and can safely restart a fresh run.
+> At worst, you break your current run, but then you can always safely restart a fresh run.
 > Other progress outside the run, like achievements or unlocks, are left untouched.
 
 ### 1. Install
@@ -35,9 +35,9 @@ Install the package with `pip install spireslayer`.
 ### 2. Identify installation path
 
 On most of the case, the game will be installed on `C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire`.
-If this is your case, skip to the next step. If not, take a note on your installed path.
+If this is your case, jump to the next step. If not, take a note on your installed path.
 
-On Linux, it will usually be `/home/<user>/.steam/debian-installation/steamapps/common/SlayTheSpire`.
+This will vary by OS. For example in Debian it will usually be `/home/<user>/.steam/debian-installation/steamapps/common/SlayTheSpire`.
 
 ### 3. Initializing the editor
 
@@ -89,7 +89,7 @@ editor.current_health(100)
 editor.hand_size(10)
 editor.energy(5)
 
-# for attributes that are not yet provided within the package's method, you can use the `update` method
+# for attributes not yet provided within the package's method, please use `update` method
 # you can find the key for each attribute in the dumping session below
 editor.update('current_health', 90)
 editor.update('hand_size', 10)
@@ -110,8 +110,8 @@ editor.save()
 
 ### Extra 1: dumping your save file
 
-`Editor.dumps()` is provided for dumping the decode save data to output stream.
-This can be useful to understand the whole structure in general, or to flexibly modify it.
+`Editor.dumps()` is provided for dumping the decoded save data to output stream.
+This can be useful to understand the whole structure in general.
 
 ```python3
 from spireslayer.editor import Editor
