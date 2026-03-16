@@ -89,7 +89,7 @@ editor.current_health(100)
 editor.hand_size(10)
 editor.energy(5)
 
-# for attributes that are not yet provided within the package's method, you can use the `update` method
+# for attributes not yet provided within the package's method, please use `update` method
 # you can find the key for each attribute in the dumping session below
 editor.update('current_health', 90)
 editor.update('hand_size', 10)
