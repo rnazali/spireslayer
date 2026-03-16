@@ -110,7 +110,7 @@ editor.save()
 ### Extra 1: dumping your save file
 
 `Editor.dumps()` is provided for dumping the decode save data to output stream.
-This can be useful to understand the whole structure in general as your baseline.
+This can be useful to understand the whole structure in general.
 
 ```python3
 from spireslayer.editor import Editor
